@@ -9,8 +9,8 @@ class Solution {
             max = Math.max(max, pre);
             suf*=nums[len-i];
             max = Math.max(max,suf);
-            if(nums[i]==0)  pre = 1;
-            if(nums[len-i]==0)  suf = 1;
+            if(pre==0)  pre = 1;
+            if(suf==0)  suf = 1;
         }
         return max;
     }
