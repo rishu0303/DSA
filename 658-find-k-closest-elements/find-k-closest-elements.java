@@ -1,25 +1,15 @@
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         List<Integer> ls = new ArrayList<>();
-        int s = 0, len = arr.length-1, e = len;
-        int mid = 0, index = 0;
-        boolean flag = false;
-        while(s<=e){
-            mid = s+(e-s)/2;
-            if(arr[mid]==x) {
-                flag = true;
-                break;
-            }else if(arr[mid]<x)    s = mid+1;
-            else e = mid-1;
+        int len = arr.length-1;
+        int left = 0, right = len- 1;
+        int mid;
+        while (left < right) {
+            mid = left + (right - left) / 2;
+            if (arr[mid] < x) left = mid + 1;
+            else right = mid;
         }
-        int l,r;
-        if(flag){
-            l = mid-1;
-            r = mid;
-        }else{
-            l = s-1;
-            r = s;
-        }
+        int l = left - 1, r = left;
         while(k>0){
             if(l<0){
                 ls.add(arr[r++]);
