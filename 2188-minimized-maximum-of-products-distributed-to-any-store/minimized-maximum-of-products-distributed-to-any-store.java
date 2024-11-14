@@ -1,16 +1,15 @@
 class Solution {
     public int minimizedMaximum(int x, int[] quantities) {
-        int n = quantities.length;
+        // int n = quantities.length;
         int low = 1;
         int high = 100000;
-        int res = -1;
         while (low <= high) {
-            int mid = low + (high - low) / 2;
-            int hour = 0;
-            for (int i = 0; i < n; i++) {
-                hour += Math.ceil(quantities[i] * 1d / mid);
+            int mid = (low + high)/2;
+            int total = 0;
+            for(int quantity : quantities) {
+                total += (quantity+mid-1)/mid;
             }
-            if (hour > x)
+            if (total > x)
                 low = mid + 1;
             else
                 high = mid - 1;
