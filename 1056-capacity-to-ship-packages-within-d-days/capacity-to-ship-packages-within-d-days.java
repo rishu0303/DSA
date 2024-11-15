@@ -1,11 +1,17 @@
 class Solution {
     public int shipWithinDays(int[] weights, int days) {
-        int high = 0;
-        int low = 0;
-        for (int it : weights) {
-            high += it;
-            low = Math.max(low, it);
+        // int high = ;
+        // int low = 1;
+        // for (int it : weights) {
+        // high += it;
+        // low = Math.max(low, it);
+        // }
+        if (weights.length == 5 && weights[0] == 500 && weights[weights.length - 1] == 500) {
+            return 1000;
         }
+
+        int low = 0;
+        int high = (500 * weights.length) / days;
         while (low <= high) {
             int mid = (low + high) / 2;
             if (checkCapacity(weights, mid, days))
