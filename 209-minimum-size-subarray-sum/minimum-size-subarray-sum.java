@@ -1,23 +1,19 @@
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
         int sum = 0;
-        int miny = 100000000;
-        int n = nums.length-1;
-        int j =0;
-        for(int i =0;i<=n;i++)
-        {
-            sum +=nums[i];
-            while(sum>=target)
-            {
-                miny = Math.min(miny,i-j+1);
-                sum -=nums[j];
-                j++;
+        int n = nums.length;
+        int min = n+1;
+        int  i = 0, j = 0;
+        while(j<n){
+            sum+=nums[j];
+            while(sum>=target && i<=j){
+                min = Math.min(min,j-i+1);
+                sum-=nums[i];
+                i++;
             }
-        }
-         if(miny<10000000)
-         {
-            return miny;
-         }
-       return 0;
+            j++;
+        } 
+        if(min<=n)   return min;
+        return 0; 
     }
 }
