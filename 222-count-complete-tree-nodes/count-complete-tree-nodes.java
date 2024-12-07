@@ -15,16 +15,21 @@
  */
 class Solution {
     public int countNodes(TreeNode root) {
-        int count = 0;
         if(root==null)  return 0;
-        Stack<TreeNode> st = new Stack<>();
-        st.push(root);
-        while(!st.isEmpty()){
-            count++;
-            root = st.pop();
-            if(root.right!=null)  st.push(root.right);
-            if(root.left!=null)  st.push(root.left);
-        }
-        return count;
-    }
+        return countNodes(root.left)+countNodes(root.right)+1;
+    } 
+
+    // public int countNodes(TreeNode root) {
+    //     int count = 0;
+    //     if(root==null)  return 0;
+    //     Stack<TreeNode> st = new Stack<>();
+    //     st.push(root);
+    //     while(!st.isEmpty()){
+    //         count++;
+    //         root = st.pop();
+    //         if(root.right!=null)  st.push(root.right);
+    //         if(root.left!=null)  st.push(root.left);
+    //     }
+    //     return count;
+    // }
 }
